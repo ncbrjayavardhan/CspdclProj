@@ -1,0 +1,879 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+
+<%-- <base href="${pageContext.request.contextPath}"> --%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dashboard - MyProfile</title>
+    
+	<!-- Bootstrap Core CSS -->
+    <link href="./Dashboard - MyProfile_files/bootstrap.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="./Dashboard - MyProfile_files/animate.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="./Dashboard - MyProfile_files/sidebar-nav.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./Dashboard - MyProfile_files/style.css" rel="stylesheet">
+	<link href="./Dashboard - MyProfile_files/cartstyle.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="./Dashboard - MyProfile_files/blue.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <script async="" src="./Dashboard - MyProfile_files/analytics.js.download"></script><script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-19175540-9', 'auto');
+        ga('send', 'pageview');
+    </script>
+	<style>
+		.navbar-top-links {
+			margin-right: 20px;
+			margin-top: 20px;
+		}
+		ul.smedia {
+			list-style-type: none;
+			display: block;
+			padding: 0px;
+		}
+		ul.smedia li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+		#mysup {
+			top: -15px
+		}
+		#mysup .label {
+			letter-spacing: 0.05em;
+			border-radius: 60px;
+			padding: 4px 8px 3px;
+			font-weight: bold;
+		}
+		#mysup .label-success {
+			background-color: #004274;
+		}
+		.form-material .form-control {
+			background-image: linear-gradient(#9675ce, #9675ce), linear-gradient(rgba(120, 130, 140, 1), rgba(120, 130, 140, 1));
+		}
+		.product-img{text-align:center;position:relative}.product-img img{max-width:200px}.product-img .pro-img-overlay{position:absolute;width:100%;height:100%;top:0;left:0;display:none;background:rgba(255,255,255,.8)}.product-img .pro-img-overlay a{box-shadow:0 0 10px rgba(0,0,0,.1);height:40px;width:40px;display:inline-block;border-radius:100%;-webkit-border-radius:100%;-o-border-radius:100%;text-align:center;padding:0px 0;color:#fff;margin:30% 5px}.product-img .pro-img-overlay a:hover{background:#4c5667!important}.product-img:hover .pro-img-overlay{display:block}
+		
+		
+		
+		
+	</style>
+</head>
+
+<body>
+
+<!-- sai java code--start -->
+
+<%
+
+
+
+System.out.println("hiiii");
+String name="sai";
+String val=session.getAttribute("session1").toString();
+System.out.println("val="+val);
+/* try{
+HttpSession session2=request.getSession(false);
+String val=session.getAttribute("session1").toString();
+System.out.println("session valriable="+val);
+}catch(Exception e){
+	System.out.println("e= "+e);
+} */
+
+%>
+<!-- sai java code--start -->
+
+
+    <!-- Preloader -->
+    <div class="preloader" style="display: none;">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+                <div class="top-left-part"></div>
+                <ul class="nav navbar-top-links navbar-left hidden-xs">
+                    <li><a class="logo" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/index.html"><b><img src="./Dashboard - MyProfile_files/vaibhu background.jpg" alt="home" style="width: 96px;margin-left: 600px;"></b></a></li>
+                    
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#"><i class="icon-envelope"></i>
+                    <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                    </a>
+                        <ul class="dropdown-menu mailbox animated bounceInDown">
+                            <li>
+                                <div class="drop-title">You have 4 new messages</div>
+                            </li>
+                            <li>
+                                <div class="message-center">
+                                    <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/inbox.html">
+                                        <div class="user-img"> <img src="./Dashboard - MyProfile_files/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                        <div class="mail-contnet">
+                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+                                    </a>
+                                    <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/inbox.html">
+                                        <div class="user-img"> <img src="./Dashboard - MyProfile_files/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                        <div class="mail-contnet">
+                                            <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+                                    </a>
+                                    <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/inbox.html">
+                                        <div class="user-img"> <img src="./Dashboard - MyProfile_files/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                        <div class="mail-contnet">
+                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+                                    </a>
+                                    <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/inbox.html">
+                                        <div class="user-img"> <img src="./Dashboard - MyProfile_files/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                        <div class="mail-contnet">
+                                            <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="text-center" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/inbox.html"> <strong>See all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <!-- /.dropdown -->
+					<li class="dropdown in"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#"><i class="ti-shopping-cart"></i>
+              <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+            </a>
+                        
+                        <ul class="dropdown-menu dropdown-cart dropdown-tasks animated slideInUp">
+                            <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#">
+							<li>
+                                <div class="cart-img"><img src="./Dashboard - MyProfile_files/booksimg1.jpg"></div>
+                                <div class="cart-content">
+                                    <h5>Package Name1</h5><small>$153</small></div>
+                            </li>
+							</a>
+                            <li class="divider"></li>
+							<a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#">
+                            <li>
+                                <div class="cart-img"><img src="./Dashboard - MyProfile_files/booksimg1.jpg"></div>
+                                <div class="cart-content">
+                                    <h5>Package Name2</h5><small>$153</small></div>
+                            </li>
+							</a>
+                            <li class="divider"></li>
+                            <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html" class="active">
+							<li>
+                                <div class="cart-img"><img src="./Dashboard - MyProfile_files/booksimg1.jpg"></div>
+                                <div class="cart-content">
+                                    <h5>Package Name3</h5><small>$153</small></div>
+                            </li>
+							</a>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/checkoutpage.html"> <strong>Checkout</strong> <i class="fa fa-angle-right"></i> </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-tasks -->
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#"> <i class="ti-settings"></i></a>
+                        <ul class="dropdown-menu dropdown-user animated flipInY">                            
+                            <li><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/login.html"><i class="fa fa-power-off"></i>  Logout</a></li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+       <!-- Left navbar-header -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="sidebar-nav navbar-collapse slimscrollsidebar" style="overflow: hidden; width: auto; height: 100%;">
+			
+                <ul class="nav in" id="side-menu">
+                
+                
+                   <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bars p-r-10"></i> <span class="hide-menu"> My Profile <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level collapse">
+                        
+                             <form name="submitForm" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                              <input type="hidden" name="page" value="ProfileViewing.jsp">
+                            <li> <a href="javascript:document.submitForm.submit();"><i class="fa fa-print p-r-10"></i>View Profile</a></li>
+                           </form>
+                           
+                           <form name="submitForm2" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                           <input type="hidden" name="page" value="EditProfile.jsp">
+                            <li> <a href="javascript:document.submitForm2.submit();"><i class="fa fa-laptop p-r-10"></i>Edit Profile</a></li>
+                            </form>
+                        </ul>
+                    </li>
+                     
+                        <!-- <ul class="nav nav-second-level collapse">
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/instructions.html"><i class="fa fa-building-o p-r-10"></i>Under Graduate</a> </li>
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/instructions.html"><i class="fa fa-building p-r-10"></i>Post Graduate</a> </li>
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/instructions.html"><i class="fa fa-users p-r-10"></i>MBA</a> </li>
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/instructions.html"><i class="fa fa-euro p-r-10"></i>German Language</a> </li>
+                        </ul>
+                    </li>
+                    <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/insurance.html" class="waves-effect"><i class="fa fa-plus p-r-10"></i> <span class="hide-menu"> Insurence </span></a></li>
+					<li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/bankaccount.html" class="waves-effect"><i class="fa fa-bank p-r-10"></i> <span class="hide-menu"> Bank Account </span></a></li>
+					
+                    <li><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/instructions.html" class="waves-effect"><i class="fa fa-edit p-r-10"></i> <span class="hide-menu">Job Application</span></a></li> -->
+					
+					
+					<li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bars p-r-10"></i> <span class="hide-menu"> Employee Management <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level collapse">
+                        
+                        <!-- my code start -->
+                        
+                        
+                            <li> 
+                            <form name="submitForm3" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="EmployeeList.jsp">
+                            <a href="javascript:document.submitForm3.submit()"><i class="fa fa-print p-r-10"></i>Employees List</a>
+                             </form>
+                            </li>
+                         
+                          
+                           <!-- my code end -->
+                           
+                            <li>
+                            <form name="submitForm4" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="AddingNewEmployee.jsp">
+                             <a href="javascript:document.submitForm4.submit()" ><i class="fa fa-laptop p-r-10"></i>Adding New Employee</a>
+                             </form>
+                             </li>
+                      
+                        </ul>
+                    </li>
+                    
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bars p-r-10"></i> <span class="hide-menu"> Assert Management <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li> 
+                             <form name="submitForm5" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="AssertEntry.jsp">
+                            <a href="javascript:document.submitForm5.submit()"><i class="fa fa-print p-r-10"></i>Fixed Asserts</a>
+                            </form>
+                            </li>
+                            
+                            <li> 
+                             <form name="submitForm6" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="Stock.jsp">
+                            <a href="javascript:document.submitForm6.submit()"><i class="fa fa-laptop p-r-10"></i>Stock</a>
+                            </form>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    
+                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bars p-r-10"></i> <span class="hide-menu"> Accounts Management <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li> 
+                            <form name="submitForm7" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="AdvanceEntry.jsp">
+                            <a href="javascript:document.submitForm7.submit()"><i class="fa fa-print p-r-10"></i>Advance Entry</a>
+                            </form>
+                            </li>
+                            
+                            <li> 
+                            <form name="submitForm8" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="Salary_Information.jsp">
+                            <a href="javascript:document.submitForm8.submit()"><i class="fa fa-laptop p-r-10"></i>Monthly salary Entry</a>
+                            </form>
+                            </li>
+                            <li> 
+                             <form name="submitForm9" method="POST" action="/VaibhuManagementSystem/EditProfileServlet">
+                            <input type="hidden" name="page" value="ExpensiveEntry.jsp">
+                            <a href="javascript:document.submitForm9.submit()"><i class="fa fa-laptop p-r-10"></i>Expensives Entry</a>
+                           </form>
+                            </li>
+                                <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/websitedesigning.html"><i class="fa fa-laptop p-r-10"></i>Reports</a></li>                   
+                        </ul>
+                    </li>
+                    
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bars p-r-10"></i> <span class="hide-menu"> Billing Performencess <span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li> <a href="DailyBillingEntry.jsp"><i class="fa fa-print p-r-10"></i>Daily Billing Entry</a></li>
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/websitedesigning.html"><i class="fa fa-laptop p-r-10"></i>Billing performence</a></li>
+                            <li> <a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/websitedesigning.html"><i class="fa fa-laptop p-r-10"></i>Billing reports</a></li>
+                                                   
+                        </ul>
+                    </li>
+                    
+					<li><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/applicationstatus.html" class="waves-effect"><i class="fa fa-bar-chart-o p-r-10"></i> <span class="hide-menu">Application Status</span></a></li>
+					
+                </ul>
+                
+            </div><div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 790px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+        </div>
+        <!-- Left navbar-header end -->
+        <!-- Page Content -->
+        <div id="page-wrapper" style="min-height: 523px;">
+            <div class="container-fluid">
+                <br>
+                
+                
+             <!--   <div class="white-box" style="background: #7070c6;"> 
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<h4 class="page-title" style="color: #fff;">My Profile</h4> 
+						</div>
+						
+						 <div class="col-lg-9 col-sm-9 col-md-9 col-xs-12">
+							<div class="pull-right profile-pic" style="    margin: 0 auto;text-align: center;display: block;"> <img src="../plugins/images/users/1.jpg" alt="user-img" width="100" class="img-circle" ></div>
+							<div class="pull-right profile-pic" style="    margin: 0 auto;text-align: center;display: block;"> 
+								<div class="product-img">
+									
+									<img src="./Dashboard - MyProfile_files/1.jpg" alt="user-img" width="100" class="img-circle"> 
+									<div class="pro-img-overlay">
+										<input type="file" id="imgupload" style="display:none"> 
+										<button >Image Upload</button>
+										<a href="javascript:void(0)" class="bg-info">
+										<input type="file" id="file1" name="file1" style="display:none">
+										<i id="upfile1" style="cursor:pointer" class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="bg-danger"><i class="ti-trash"></i></a></div>
+										
+
+								</div>
+							</div>
+							
+						</div> 
+						
+					</div>
+				</div>-->
+                <div class="white-box"> 
+					
+                    <ul class="nav customtab nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#personaldata" aria-controls="personaldata" role="tab" data-toggle="tab" aria-expanded="true"><span class=""><i class="ti-user"></i></span><span class=""> Employee Entry Form</span></a></li>
+						
+						 <li role="presentation" class=""><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#contactdata" aria-controls="contactdata" role="tab" data-toggle="tab" aria-expanded="false"><span class=""><i class="ti-location-pin"></i></span> <span class="">Employee Automatic Adding</span></a></li>
+						
+						<!--<li role="presentation"><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#legitimationdata" aria-controls="legitimationdata" role="tab" data-toggle="tab" aria-expanded="false"><span class=""><i class="ti-files"></i></span> <span class="">Legitimation Data</span></a></li>
+						
+						<li role="presentation" class=""><a href="file:///C:/Users/VIIPL02/Downloads/18-4-18/dashboard/myprofile.html#addressdata" aria-controls="addressdata" role="tab" data-toggle="tab" aria-expanded="false"><span class=""><i class="ti-map-alt"></i></span> <span class="">Address Data</span></a></li> -->
+				
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+ 						<div role="tabpanel" class="tab-pane fade active in" id="personaldata">	
+ 							
+ 
+ 
+                                 <form class="form-material form-horizontal">
+								<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="title">Title</label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" id="title" name="title">
+                                                <option>Mr</option>
+                                                <option>Ms</option>
+                                                <option>Shri</option>
+											</select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="surname">Surname(as Aadhar)</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="surname" name="surname" class="form-control" value="<%=name%>"placeholder="Surname">
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="surname">Father Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="surname" name="surname" class="form-control" value="<%=name%>"placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="dob">Date Of Birth</label>
+                                        <div class="col-md-12">
+                                            <input type="date" id="dob" name="dob" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12" for="cob">Country of Birth</label>
+                                        <div class="col-sm-12">
+                                            <select class="form-control" id="cob" name="cob">
+                                                <option>India</option>
+                                                <option>Canada</option>
+                                                <option>USA</option>
+                                                <option>Australia</option>
+                                                <option>Malaysia</option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="email">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="sample@gmail.com">
+                                        </div>
+                                    </div>  
+                                    
+                                      <div class="form-group">
+                                        <label class="col-md-12" for="passportn">Aadhar Number</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="passportn" name="passportn" class="form-control" placeholder="Aadhar Number">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="passportn">Pan Number</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="passportn" name="passportn" class="form-control" placeholder="Aadhar Number">
+                                        </div>
+                                    </div>
+                                                                      
+								</div>
+								
+								
+								
+								
+								
+								
+								<div class="col-md-5 pull-right">								
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="fname">First Name(as written in your Aadhar)</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="fname" name="fname" class="form-control" placeholder="santhakumar">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="maidenname">Middle Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="maidenname" name="maidenname" class="form-control" placeholder="Maiden Name(Optional)">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="surname">Mother Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="surname" name="surname" class="form-control" value="<%=name%>"placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="pob">Place Of Birth</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="pob" name="pob" class="form-control" placeholder="Nellore">
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-12" for="mstatus">Marital Status</label>
+                                        <div class="col-sm-12">
+                                            <select class="form-control" id="mstatus" name="mstatus">
+                                                <option>Married</option>
+                                                <option>UnMarried/Single</option>                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                 
+                                 	<div class="form-group">
+                                        <label class="col-md-12" for="phc">Phone Number</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="phc" name="phc" class="form-control" placeholder="9999999999">
+                                        </div>
+                                    </div>                                    
+								
+																
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="pgermany">Alternate Phone</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="pgermany" name="pgermany" class="form-control" placeholder="9999999999">
+                                        </div>
+                                    </div>
+                                   <br>                                                                  
+								</div>
+								
+								
+								<!-- new data adding start -->
+									
+                                   
+								
+                                    
+								
+								<!-- --------------- -->
+								
+								
+								
+								
+								
+								<div class="col-md-5 pull-right">	
+															
+                                  
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="ioa">Ration Card Number</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="ioa" name="ioa" class="form-control" placeholder="Ration Card Number">
+                                        </div>
+                                    </div>
+                                                                     
+                                    
+                                    <br>
+                                                                  
+								</div>
+								<!-- ------------ -->
+								<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="streeta">House Number</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="streeta" name="streeta" class="form-control" placeholder="House Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="housen">City</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="housen" name="housen" class="form-control" placeholder="Street Address">
+                                        </div>
+                                    </div>
+                                    
+                                   <div class="form-group">
+                                        <label class="col-md-12" for="federals">State</label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" id="federals" name="federals">
+                                                <option>Ap</option>
+                                                <option>UP</option>
+                                                <option>RJ</option>
+                                                 <option>TS</option>
+											</select>
+                                        </div>
+                                    </div>
+                                    
+									<div class="form-group">
+                                        <label class="col-md-12" for="federals">Employee Division </label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" id="federals" name="federals">
+                                                <option>Hyderabad</option>
+                                                <option>Kanpur</option>
+                                                <option>Agra</option>
+                                               
+                                                
+											</select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="postcode">Candidate Photo</label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="ssccertificate">
+                                        </div>
+                                    </div>    
+                                    
+								</div>
+								<div class="col-md-5 pull-right">								
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="housen">Street Address</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="housen" name="housen" class="form-control" placeholder="Street Address">
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label class="col-md-12" for="housen">District</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="housen" name="housen" class="form-control" placeholder="Street Address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="postcode">Post Code</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="postcode" name="postcode" class="form-control" placeholder="01234">
+                                        </div>
+                                    </div>
+                                   <div class="form-group">
+                                        <label class="col-md-12" for="federals">Employee Designation </label>
+                                        <div class="col-md-12">
+                                            <select class="form-control" id="federals" name="federals">
+                                                <option>Software Engineer</option>
+                                                <option>Field Incharge</option>
+                                                <option>Meter Reader</option>
+                                               
+                                                
+											</select>
+                                        </div>
+                                    </div>                                    
+                                       <div class="form-group">
+                                        <label class="col-md-12" for="postcode">Signature</label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="ssccertificate">
+                                        </div>
+                                    </div>                                    
+                                    
+                                    <br>
+								
+                                  </div>
+								<!-- ------------------------- -->
+								
+							<h2><b><u>Education Details</u></b></h2>
+							<table border="1">
+	
+							<tr>
+							<td><h4><b>Education Stage</b></h4></td>
+							<td><h4><b>Course</b></h4></td>
+							<td><h4><b>Marks Percentage</b></h4></td>
+							<td><h4><b>Certificate Upload</b></h4></td>
+							</tr>
+														
+							<tr>
+							<td><label class="col-md-12" for="federals">SSC</label></td>
+							<td>													
+                               <select  name="ssc_course">
+                               <option>SSC</option>
+                               <option>others</option>                                                                
+					           </select>
+							</td>
+							<td><input type="text" name="sscper"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><label class="col-md-12" for="federals">Intermediate</label></td>
+							<td>
+                                <select  name="inter_course">
+                                <option>M.P.C</option>
+                                <option>BI.P.C</option>
+                                <option>C.E.C</option>
+                                <option>H.E.C</option>
+                                <option>Polytechnique(EEE)</option>
+                                <option>Polytechnique(civil)</option>
+                                <option>Polytechnique(ECE)</option>
+                                <option>Polytechnique(MECH)</option>
+                                  <option>others</option>
+							    </select>
+							</td>
+							<td><input type="text" name="sscper"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><label class="col-md-12" for="federals">Graduation</label></td>
+							<td>
+                              <select  name="graduation">
+                               <option>B.TECH</option>
+                               <option>Digree</option>
+                                 <option>others</option>
+			                   </select>
+							</td>
+							
+							<td><input type="text" name="sscper"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><label class="col-md-12" for="federals">Post Graduation</label></td>
+							<td>
+				           <select  name="postGraduation">
+                               <option>M.Tech</option>
+                               <option>MBA</option>
+                               <option>MCA</option>
+                               <option>others</option>
+                           	</select>
+							</td>
+							<td><input type="text" name="sscper"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							</table>
+                                    <br>
+						
+								<h2><b><u>Famili Details</u></b></h2>
+								<table border="1">
+	
+							<tr>
+							<td><h4><b>Name</b></h4></td>
+							<td><h4><b>Relation</b></h4></td>
+							<td><h4><b>Date Of Birth</b></h4></td>
+							<td><h4><b>Aadhar Upload</b></h4></td>
+							</tr>
+							<tr>
+							<td><input type="text" name="sscper"></td>
+							<td>
+							<select  name="federals">
+                               <option>Mother</option>
+                               <option>Father</option>
+                               <option>Brother</option>
+                               <option>sister</option>
+                               <option>wife</option>
+                               <option>son</option>
+                               <option>daughter</option>
+                           	</select>
+ 							</td>
+							<td><input type="date" id="dob" name="dob" class="form-control"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><input type="text" name="sscper"></td>
+							<td>
+							<select  name="federals">
+                               <option>Mother</option>
+                               <option>Father</option>
+                               <option>Brother</option>
+                               <option>sister</option>
+                               <option>wife</option>
+                               <option>son</option>
+                               <option>daughter</option>
+                           	</select>
+ 							</td>
+							<td><input type="date" id="dob" name="dob" class="form-control"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><input type="text" name="sscper"></td>
+							<td>
+							<select  name="federals">
+                               <option>Mother</option>
+                               <option>Father</option>
+                               <option>Brother</option>
+                               <option>sister</option>
+                               <option>wife</option>
+                               <option>son</option>
+                               <option>daughter</option>
+                           	</select>
+ 							</td>
+							<td><input type="date" id="dob" name="dob" class="form-control"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><input type="text" name="sscper"></td>
+							<td>
+							<select  name="federals">
+                               <option>Mother</option>
+                               <option>Father</option>
+                               <option>Brother</option>
+                               <option>sister</option>
+                               <option>wife</option>
+                               <option>son</option>
+                               <option>daughter</option>
+                           	</select>
+ 							</td>
+							<td><input type="date" id="dob" name="dob" class="form-control"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+							
+							<tr>
+							<td><input type="text" name="sscper"></td>
+							<td>
+							<select  name="federals">
+                               <option>Mother</option>
+                               <option>Father</option>
+                               <option>Brother</option>
+                               <option>sister</option>
+                               <option>wife</option>
+                               <option>son</option>
+                               <option>daughter</option>
+                           	</select>
+ 							</td>
+							<td><input type="date" id="dob" name="dob" class="form-control"></td>
+							<td><input type="file" name="ssccertificate"></td>
+							</tr>
+								</table>
+								 
+                                    <br>
+                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">SUBMIT</button>                              
+								
+							</form> 
+							</div>
+							<div class="clearfix"></div>
+							
+							<!-- caontact data start -->
+								<div role="tabpanel" class="tab-pane fade" id="contactdata">
+								<form class="form-material form-horizontal">
+								<div class="col-md-6">
+									<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Employees Formatt Download</button>                                    
+								</div>
+							</form>
+							<br><br><br>
+							
+						-------------------------------------------------------------------
+						<br><br>
+							<form class="form-material form-horizontal">
+								<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-12" for="email">Upload the Employees Excel</label>
+                                        <div class="col-md-12">
+                                            <input type="file" id="empexcel" name="empexcel">
+                                        </div>
+                                    </div> 
+									<button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Add the Employees</button>                                    
+								</div>
+							</form> 
+							<br><br><br><br><br><br>
+							-------------------------------------------------------------------
+							
+							<div class="clearfix"></div>
+						</div>
+						
+						
+						
+						
+							<!-- caontact data end -->
+						 </div> 
+					</div> 
+                </div>
+					
+            </div>
+        </div>
+                <!-- /.container-fluid -->
+                <footer class="footer text-center"> 2018 @ vaibhu infratech idia pvt Ltd</footer>
+    </div>
+            <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <!-- jQuery -->
+    <script src="./Dashboard - MyProfile_files/jquery.min.js.download"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./Dashboard - MyProfile_files/bootstrap.min.js.download"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="./Dashboard - MyProfile_files/sidebar-nav.min.js.download"></script>
+    <!--slimscroll JavaScript -->
+    <script src="./Dashboard - MyProfile_files/jquery.slimscroll.js.download"></script>
+    <!--Wave Effects -->
+    <script src="./Dashboard - MyProfile_files/waves.js.download"></script>
+	<script src="./Dashboard - MyProfile_files/bootstrap-datepicker.min.js.download"></script>
+        <script type="text/javascript">
+        // Date Picker
+        jQuery('.mydatepicker').datepicker();
+        </script>
+    <!-- Custom Theme JavaScript -->
+    <script src="./Dashboard - MyProfile_files/custom.min.js.download"></script>
+    <!--Style Switcher -->
+<script src="./Dashboard - MyProfile_files/jQuery.style.switcher.js.download"></script>
+	<script>
+		$("#upfile1").click(function () {
+			$("#file1").trigger('click');
+		});
+	</script>
+	
+</body></html>
