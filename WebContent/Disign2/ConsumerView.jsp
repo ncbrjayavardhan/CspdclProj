@@ -402,8 +402,7 @@ System.out.println(IMAGE_PATH);
 
 %>
 
-<a href="file:///C:\CSPDCL_IMAGES\1001130066_(2).jpg">Link 1</a>
-<img src="file://<%=IMAGE_PATH %>" alt="image" align="left" />
+<img src="<%=IMAGE_PATH %>" alt="image" align="left" />
 
 
 <center>
