@@ -48,13 +48,13 @@ try{
 	//new query form for all --start
 	
 	if(division.equalsIgnoreCase("a") && circle.equalsIgnoreCase("a") )
-		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"')";
+		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH,IMAGE_PATH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"')";
 	else if(division.equalsIgnoreCase("a") && !circle.equalsIgnoreCase("a") )
-		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"') and SUBSTR(MRU,3,2)='"+circle+"'";
+		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH,IMAGE_PATH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"') and SUBSTR(MRU,3,2)='"+circle+"'";
 	else if(!division.equalsIgnoreCase("a") && circle.equalsIgnoreCase("a") )
-		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"')";
+		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH,IMAGE_PATH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"')";
 	else
-		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"') and MRU='"+division+"'";
+		Query2="select BP_NUMBER,TOTAL_BILL,UNIT_BILLED,CUR_BILL_MONTH,IMAGE_PATH from cspdcl_output where BILL_DATE between to_date('"+from_formattedDate+"') and to_date('"+to_formattedDate+"') and MRU='"+division+"'";
 
 	//new query form for all --start
 
@@ -99,23 +99,32 @@ DataBaseOperations dbo=new  DataBaseOperations();
 /* out.print("hiii"); */
 
  out.print("<table border='1' width='100%' id ='myTable'>");
-out.print("<caption><b>VAIBHU Infra</b></caption>");
-out.print("<tr>");
-out.print("<td><b>BP NUMBER</b></td>");
-out.print("<td><b>TOTAL BILL</b></td>");
-out.print("<td><b>UNIT BILLED</b></td>");
-out.print("<td><b>CUR BILL MONTH</b></td>");
-out.print("<td><b>View</b></td>");
-out.print("</tr>");
+ out.print("<caption><b>VAIBHU Infra</b></caption>");
+ out.print("<tr bgcolor='#33BEFF'>");
+ out.print("<td><b>BP NUMBER</b></td>");
+ out.print("<td><b>CURRENT MTR READING</b></td>");
+ out.print("<td><b>UNIT CONSUMPTION</b></td>");
+ out.print("<td><b>MTR STATUS</b></td>");
+ out.print("<td><b>BILL MONTH </b></td>");
+ out.print("<td><b>View</b></td>");
+
+ out.print("</tr>");
 
 try{
 	
 	while(rs.next()){
 		out.print(" <tbody>");
 		out.print("<tr>");
+		session.setAttribute("BP_NUMBER",rs.getString("BP_NUMBER"));
+		session.setAttribute("TOTAL_BILL",rs.getString("TOTAL_BILL"));
+		session.setAttribute("UNIT_BILLED",rs.getString("UNIT_BILLED"));
+		session.setAttribute("CUR_BILL_MONTH",rs.getString("CUR_BILL_MONTH"));
+		session.setAttribute("IMAGE_PATH",rs.getString("IMAGE_PATH"));
+
 		out.print("<td>"+rs.getString("BP_NUMBER")+"</td>");
-		out.print("<td>"+rs.getString("TOTAL_BILL")+"</td>");
+		out.print("<td>"+rs.getString("PRES_READ_KWH")+"</td>");
 		out.print("<td>"+rs.getString("UNIT_BILLED")+"</td>");
+		out.print("<td>"+rs.getString("CUR_MTR_STS")+"</td>");
 		out.print("<td>"+rs.getString("CUR_BILL_MONTH")+"</td>");
 		out.print("<td><form name='submitForm' method='POST' action='/CspdclDashBoard/ImageDispalyServlet?id="+rs.getString("BP_NUMBER")+"'><input type='hidden' name='page' value='ProfileViewing.jsp'><button type='submit' class='btn btn-success waves-effect waves-light m-r-10'>View</button></form></td>");
 		out.print("</tr>");

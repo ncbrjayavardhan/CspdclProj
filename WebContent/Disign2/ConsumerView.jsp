@@ -391,27 +391,19 @@ if(userid.equalsIgnoreCase("null") || userid==null){
 String img_data=tfr.ImageTextFileReading();
 tfr.Base64Image(img_data); */
 
-String BP_NUMBER=session.getAttribute("BP_NUMBER").toString();
-String BILL_NET_WITHIN_DUE_DATE=session.getAttribute("BILL_NET_WITHIN_DUE_DATE").toString();
-String  BILL_DATE=session.getAttribute("BILL_DATE").toString();
-String  UNIT_BILLED=session.getAttribute("UNIT_BILLED").toString();
-String TOTAL_BILL=session.getAttribute("TOTAL_BILL").toString();
-String PRES_READ_KWH=session.getAttribute("PRES_READ_KWH").toString();
+String BP_NUMBER=(String)session.getAttribute("BP_NUMBER");
+String IMAGE_PATH=(String)session.getAttribute("IMAGE_PATH");
+String TOTAL_BILL=(String)session.getAttribute("TOTAL_BILL");
+String UNIT_BILLED=(String)session.getAttribute("UNIT_BILLED");
+String CUR_BILL_MONTH=(String)session.getAttribute("CUR_BILL_MONTH");
 
-System.out.println("");
-System.out.println(BP_NUMBER);
-System.out.println(BILL_NET_WITHIN_DUE_DATE);
-System.out.println( BILL_DATE);
-System.out.println( UNIT_BILLED);
-System.out.println(TOTAL_BILL);
-System.out.println(PRES_READ_KWH);
-
+System.out.println(IMAGE_PATH);
 
 
 %>
 
-
-<img src="<%=BP_NUMBER%>.jpg" alt="rdg image" align="left">
+<a href="file:///C:\CSPDCL_IMAGES\1001130066_(2).jpg">Link 1</a>
+<img src="file://<%=IMAGE_PATH %>" alt="image" align="left" />
 
 
 <center>
@@ -421,25 +413,18 @@ System.out.println(PRES_READ_KWH);
 <td>BP NUMBER</td>
 <td><%=BP_NUMBER %></td>
 </tr>
-
 <tr>
-<td>BILLED UNIT</td>
+<td>TOTAL_BILL</td>
+<td><%=TOTAL_BILL %></td>
+</tr>
+<tr>
+<td>UNIT_BILLED</td>
 <td><%=UNIT_BILLED %></td>
 </tr>
 <tr>
-<td>BILL DATE</td>
-<td><%=BILL_DATE %></td>
+<td>CUR_BILL_MONTH</td>
+<td><%=CUR_BILL_MONTH%></td>
 </tr>
-<tr>
-<tr>
-<td>CLOSE READING</td>
-<td><%=PRES_READ_KWH %></td>
-</tr>
-<tr>
-<td>TOTAL DUE</td>
-<td><%=TOTAL_BILL %></td>
-</tr>
-
 </table>
 </b>
 </center>

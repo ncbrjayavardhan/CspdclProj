@@ -96,17 +96,18 @@ while(rs.next()){
 	
 out.print("<tr>");
 session.setAttribute("BP_NUMBER",rs.getString("BP_NUMBER"));
-session.setAttribute("READING_IMAGE",rs.getString("READING_IMAGE"));
+session.setAttribute("TOTAL_BILL",rs.getString("TOTAL_BILL"));
+session.setAttribute("UNIT_BILLED",rs.getString("UNIT_BILLED"));
+session.setAttribute("CUR_BILL_MONTH",rs.getString("CUR_BILL_MONTH"));
+session.setAttribute("IMAGE_PATH",rs.getString("IMAGE_PATH"));
 
 out.print("<td>"+rs.getString("BP_NUMBER")+"</td>");
 out.print("<td>"+rs.getString("PRES_READ_KWH")+"</td>");
 out.print("<td>"+rs.getString("UNIT_BILLED")+"</td>");
 out.print("<td>"+rs.getString("CUR_MTR_STS")+"</td>");
 out.print("<td>"+rs.getString("CUR_BILL_MONTH")+"</td>");
-if(rs.getString("READING_IMAGE") == null){
+if(rs.getString("IMAGE_PATH") != null){
 	out.print("<td><form name='submitForm' method='POST' action='ConsumerView.jsp'><input type='hidden' name='page' value='ProfileViewing.jsp'><button type='submit' class='btn btn-success waves-effect waves-light m-r-10'>View</button></form></td>");
-}else{
-	out.print("<td><img src="+rs.getString("READING_IMAGE")+"/></td>");
 }
 //
 out.print("</tr>");

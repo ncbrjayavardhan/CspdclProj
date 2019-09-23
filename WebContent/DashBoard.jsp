@@ -83,25 +83,8 @@
 
 <body>
 
-<!-- sai java code--start -->
-
-<%
 
 
-
-System.out.println("hiiii");
-String name="sai";
-String val=session.getAttribute("session1").toString();
-System.out.println("val="+val);
-/* try{
-HttpSession session2=request.getSession(false);
-String val=session.getAttribute("session1").toString();
-System.out.println("session valriable="+val);
-}catch(Exception e){
-	System.out.println("e= "+e);
-} */
-
-%>
 <!-- sai java code--start -->
 
 
