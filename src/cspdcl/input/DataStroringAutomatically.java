@@ -22,7 +22,6 @@ public class DataStroringAutomatically {
 
 	
 public ResultSet exicuteQueryReesultSet(String Qury, Connection con) {
-		
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	int kk=0;
@@ -31,21 +30,6 @@ public ResultSet exicuteQueryReesultSet(String Qury, Connection con) {
 		 rs = ps.executeQuery();
 		}catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			
-			try {
-			if(rs!=null)
-				rs.close();
-			}catch(Exception ee) {
-			}
-			
-			try {
-			if(ps!=null)
-				ps.close();
-			
-		}catch(Exception ee) {
-			
-		}
 		}
 	return rs;
 	}
