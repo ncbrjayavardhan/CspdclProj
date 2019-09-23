@@ -44,7 +44,7 @@ System.out.println(group);
 System.out.println(count);
  */
 System.out.println("Query2= "+Query2);
-
+if(Query2 == null) return;
 ResultSet rs=null;
 Connection con=null;
 PreparedStatement ps=null;
@@ -66,18 +66,17 @@ rs=dbo.exicuteQueryReesultSet(Query2, con, rs,ps);
 
 
 /* out.print("hiii"); */
-
- out.print("<table border='1' width='100%'> id='myTable'");
-out.print("<tr><b>Cash&Check Date Update</b></tr>");
-out.print("<tr>");
+ out.print("<table border='1' width='100%' id='myTable'>");
+out.print("<caption><b>VAIBHU Infra</b></caption>");
+out.print("<tr bgcolor='#33BEFF'>");
 out.print("<td><b>BP NUMBER</b></td>");
-out.print("<td><b>TOTAL BILL</b></td>");
-out.print("<td><b>UNIT BILLED</b></td>");
-out.print("<td><b>CUR BILL MONTH</b></td>");
+out.print("<td><b>CURRENT MTR READING</b></td>");
+out.print("<td><b>UNIT CONSUMPTION</b></td>");
+out.print("<td><b>MTR STATUS</b></td>");
+out.print("<td><b>BILL MONTH </b></td>");
 out.print("<td><b>View</b></td>");
 
 out.print("</tr>");
-
 /* out.print("<tr>");
 out.print("<form id='ordertable' name='ordertable'>");
 out.print("<td> <input type='checkbox' id='dob' name='dob' class='form-control' ></td>");
@@ -96,15 +95,25 @@ try{
 while(rs.next()){
 	
 out.print("<tr>");
+session.setAttribute("BP_NUMBER",rs.getString("BP_NUMBER"));
+session.setAttribute("READING_IMAGE",rs.getString("READING_IMAGE"));
+
 out.print("<td>"+rs.getString("BP_NUMBER")+"</td>");
-out.print("<td>"+rs.getString("TOTAL_BILL")+"</td>");
+out.print("<td>"+rs.getString("PRES_READ_KWH")+"</td>");
 out.print("<td>"+rs.getString("UNIT_BILLED")+"</td>");
+out.print("<td>"+rs.getString("CUR_MTR_STS")+"</td>");
 out.print("<td>"+rs.getString("CUR_BILL_MONTH")+"</td>");
-out.print("<td><form name='submitForm' method='POST' action='ConsumerView.jsp'><input type='hidden' name='page' value='ProfileViewing.jsp'><button type='submit' class='btn btn-success waves-effect waves-light m-r-10'>View</button></form></td>");
+if(rs.getString("READING_IMAGE") == null){
+	out.print("<td><form name='submitForm' method='POST' action='ConsumerView.jsp'><input type='hidden' name='page' value='ProfileViewing.jsp'><button type='submit' class='btn btn-success waves-effect waves-light m-r-10'>View</button></form></td>");
+}else{
+	out.print("<td><img src="+rs.getString("READING_IMAGE")+"/></td>");
+}
+//
 out.print("</tr>");
 
 	}
 }catch(Exception e){
+	e.printStackTrace();
 	System.out.println(e.getMessage());
 }finally{
 	try{

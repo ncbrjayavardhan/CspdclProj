@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -36,6 +39,8 @@ public class FileUploadHandler extends HttpServlet {
         //process only if its multipart content
      String updated_data="";
      String return_message="";
+     String new_file_name="";
+     List returnData=new ArrayList();
 
      CheckingPojo cp=new CheckingPojo();
         if(ServletFileUpload.isMultipartContent(request)){
@@ -72,25 +77,25 @@ public class FileUploadHandler extends HttpServlet {
 //                    	 updated_data=cir.InputdataLoadingWithOwlFileOnce(bfReader,new BufferedReader(bfReader) );
 //                            System.out.println("data checked");
 
-                    		int	 updated_data2=cir.InputdataLoading(bfReader2);
+                    	 returnData=cir.InputdataLoading(bfReader2);
 //                       System.out.println("updated_data2= "+updated_data2);
 //                       cp.setMessage(""+updated_data2);
-                       return_message=""+updated_data2;
+                       return_message=""+returnData.get(0);
                     	}else {
 //                            response.sendRedirect("Disign2/DataLoading.jsp?data="+cp.getMessage());
 
                     	}
                     	
-                    	try {
+                   	try {
                     	System.out.println("updated_data= "+updated_data);
 
                         String name = new File(item.getName()).getName();
                         FileNameAutoChange fnc=new FileNameAutoChange();
-                        String new_file_name=fnc.Name_series(UPLOAD_DIRECTORY + File.separator + name);
-//                        item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
-                        item.write( new File(new_file_name));
+                        new_file_name=fnc.Name_series(UPLOAD_DIRECTORY + File.separator + name);
+                        item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
+                       item.write( new File(new_file_name));
                     	}catch (Exception ee) {
-                    			ee.printStackTrace();
+                    			System.out.println("file not created in the directory:"+ new_file_name +ee.getMessage());
                     	}
                     
                     }
@@ -120,8 +125,16 @@ public class FileUploadHandler extends HttpServlet {
         */
 //        response.setAttribute("data", updated_data);
 //        response.setIntHeader("data", updated_data);
-     
-         response.sendRedirect("Disign2/DataLoading.jsp?data="+return_message);
+        if(returnData.size() >1) {
+        	HttpSession session = request.getSession(false);
+        	//save message in session
+        	session.setAttribute("errMsg", returnData.get(1));
+        	 response.sendRedirect("Disign2/DataLoading.jsp?data="+returnData.get(0));
+        }else {
+        	response.sendRedirect("Disign2/DataLoading.jsp?data="+returnData.get(0));
+        	
+        }
+        
 //        response.sendRedirect("Disign2/DataLoading.jsp");
 
 //        request.setAttribute("data", updated_data);

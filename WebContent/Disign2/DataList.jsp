@@ -219,7 +219,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							
+						<%if(!"D".equals(session.getAttribute("AUTH_CODE"))){ %>
 							<li class="">
 								<a href="DataLoading.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -290,7 +290,7 @@
 					</li>
 					
 				</ul><!-- /.nav-list -->
-
+	<%} %>
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
@@ -415,6 +415,7 @@ if(userid.equalsIgnoreCase("null") || userid==null){
 
 <script>
 function myFunction() {
+	debugger;
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
@@ -446,7 +447,8 @@ function sendInfo()
  var circle=document.dataview.circle.value;
  var bmonth=document.dataview.bmonth.value;
  var mru=document.dataview.mru.value;
- var url="DataList_code.jsp?from="+from+"&to="+to+"&discome="+discome+"&circle="+circle+"&bmonth="+bmonth+"&mru="+mru; 
+ var myBpNumber=document.dataview.myInput.value;
+ var url="DataList_code.jsp?from="+from+"&to="+to+"&discome="+discome+"&circle="+circle+"&bmonth="+bmonth+"&mru="+mru+"&BPnumber"+myBpNumber; 
 
  
 if(window.XMLHttpRequest){  
@@ -488,7 +490,6 @@ function TableSort()
 	var count=document.ordertable.count.value; */
 
 /* var url="TotalUploadedData.jsp";  */ 
-
  var url="DataList_code_sorting.jsp?number="+number; 
   
 if(window.XMLHttpRequest){  

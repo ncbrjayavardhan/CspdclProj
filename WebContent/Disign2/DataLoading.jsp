@@ -219,7 +219,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							
+					<%if(!"D".equals(session.getAttribute("AUTH_CODE"))){ %>
 							<li class="">
 								<a href="DataLoading.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -290,7 +290,7 @@
 					</li>
 					
 				</ul><!-- /.nav-list -->
-
+				<%} %>
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
@@ -410,12 +410,11 @@ if(userid.equalsIgnoreCase("null") || userid==null){
 try
 {
 	System.out.println("data= "+request.getParameter("data"));
-	
 	if(request.getParameter("data")!=null){
 	
 	%>
 	
-	 <h3><p color="blue"> uploaded data <%=request.getParameter("data") %> </p></h3>
+	 <h3><p color="blue"> uploaded data <%=request.getParameter("data") %></p></h3>
 	
 	<%
 	}
@@ -433,6 +432,15 @@ try
 <!-- <button onclick="abortRead();">Cancel read</button> -->
 <div id="progress_bar"><div class="percent">0%</div></div>
  <input type="submit" value="upload" />
+ <br/>
+ <%if(request.getSession().getAttribute("errMsg") != null){ %>
+ <marquee behavior="scroll" direction="right">
+  <font size="8" color="red"><%=request.getSession().getAttribute("errMsg") %> </font>
+ </marquee>
+ <%
+ }
+session.removeAttribute("errMsg");
+%>
 </form>
 <br>
 <%-- <%

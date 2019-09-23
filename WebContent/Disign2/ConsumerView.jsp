@@ -223,7 +223,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							
+							<%if(!"D".equals(session.getAttribute("AUTH_CODE"))){ %>
 							<li class="">
 								<a href="DataLoading.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -266,7 +266,7 @@
 							
 						</ul>
 					</li>
-					
+					<%} %>
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

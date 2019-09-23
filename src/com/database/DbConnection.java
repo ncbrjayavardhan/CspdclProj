@@ -1,17 +1,11 @@
 
 package com.database;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-
-//import org.apache.log4j.nt.NTEventLogAppender;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,9 +13,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 /*import org.apache.log4j.PropertyConfigurator;
 */
@@ -110,7 +105,7 @@ public class DbConnection implements ServletContextListener
 		try{
 			Class.forName(DriverClass);
 			
-			con = DriverManager.getConnection(url,username,password);
+			con = DriverManager.getConnection(url,username2,password2);
 			 
 			}catch(Exception e)
 			{

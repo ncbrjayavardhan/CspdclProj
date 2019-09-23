@@ -6,20 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-
-import com.pojo.DashBoardPojo;
 
 public class DivisionsList {
 
-	private Map<String,List<String>> subDivionCodeMap=new HashMap<>();
-	//dccode,list
-	//retruning first DCcode
-	public List<String> getSubDivCode() {
-		List<String> dcCode=subDivionCodeMap.get(subDivionCodeMap.keySet().toArray()[0]);
-		return dcCode!= null?dcCode : new ArrayList();
-	}
+	Map<String,List<String>> subDivionCodeMap=new HashMap<>();
 	
 	public List getSubDivCode(String divisionCode) {
 		return subDivionCodeMap.get(divisionCode);
@@ -37,7 +28,7 @@ public class DivisionsList {
 	
 		List<String> li=new ArrayList<>();
 		DbConnection db=new DbConnection();
-		String Query ="SELECT  distinct DC_CODE,SUB_DC_CODE from CSPDCL_WEB_USER_PERMISSIONS where USER_NAME='"+username+"'";
+		String Query ="SELECT distinct DC_CODE,SUB_DC_CODE from CSPDCL_WEB_USER_PERMISSIONS where USER_NAME='"+username+"' group by  DC_CODE,SUB_DC_CODE " ;
 
 		try {
 			
@@ -88,6 +79,14 @@ public class DivisionsList {
 		
 	}
 	
+public Map<String, List<String>> getSubDivionCodeMap() {
+		return subDivionCodeMap;
+	}
+
+	public void setSubDivionCodeMap(Map<String, List<String>> subDivionCodeMap) {
+		this.subDivionCodeMap = subDivionCodeMap;
+	}
+
 public List MruListGetting(String divcode) {
 		
 

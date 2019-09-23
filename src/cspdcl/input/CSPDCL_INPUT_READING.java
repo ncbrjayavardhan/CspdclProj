@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import com.database.DataBaseOperations;
 //import com.cspdcl.db.DataBaseConnection;
 //import com.cspdcl.db.DataStroringAutomatically;
 import com.database.DbConnection;
@@ -161,9 +161,13 @@ public class CSPDCL_INPUT_READING {
 	  
 	  } 
 	 
-	 public int InputdataLoading(BufferedReader br) {
-		 
+	 public List InputdataLoading(BufferedReader br) {
+		 List returnData=new ArrayList<String>();
 		 Set set=new HashSet<>();
+		 String errorLineNumbers=" ";
+		  Calendar now = Calendar.getInstance();
+		  Integer calendarYear=now.get(Calendar.YEAR);
+		  Integer caledarMonth=(now.get(Calendar.MONTH) + 1);
 		  String st; 
 		  int loop=0;
 		  
@@ -173,11 +177,15 @@ public class CSPDCL_INPUT_READING {
 		  try {
 			 con=db.getConnObject2();
 			 
-		  while ((st = br.readLine()) != null) {
+		  while ((st = br.readLine()) != null ) {
 //		    System.out.println(st); 	 
 		  String[] parts = st.split("\\|");
 		  
 		  set.add(parts.length);
+		  Integer fileDataYear=Integer.valueOf(parts[34]);
+		  Integer fileDataMonth=Integer.valueOf(parts[33]);
+		  if(calendarYear.equals(fileDataYear) &&(caledarMonth.equals(fileDataMonth) ||fileDataMonth.equals(caledarMonth-2)||fileDataMonth.equals(caledarMonth-1) )) {
+		
 		  
 		  System.out.println(++loop);
 		  
@@ -268,6 +276,7 @@ public class CSPDCL_INPUT_READING {
 		  String SUCHARGE_ARREARS=parts[39];
 		  String SD_ARREAR=parts[40];
 		  String ADDITIONAL_SECURITY_RAISED=parts[41];
+		  //33,34
 		  String SD_INTEREST=parts[42];
 		  String MANUAL_DEMAND_MISC_CHARGES=parts[43];
 		  
@@ -377,14 +386,24 @@ public class CSPDCL_INPUT_READING {
 			  System.out.println(parts[0]+"= already updated");
 			  Thread.sleep(10);
 		  }*/
-		  
+		  }else {
+			  line_count++;
+			  int count=line_count;
+			  errorLineNumbers=errorLineNumbers+" "+count+",";
+			  System.out.println("We are not proceesing the line"+st+", as we have recievd the incorrect date please check the  month in record.");
+		  }
 		  }
 		  }catch (Exception e) {
 			e.printStackTrace();
 		}
 		  
 		  System.out.println(set);
-		return line_count;
+		  returnData.add(line_count);
+		  if(errorLineNumbers.trim().length() >0) {
+			  returnData.add("Please check the data ,Error in line numbers "+errorLineNumbers.substring(0,errorLineNumbers.lastIndexOf(",")));
+			 
+		  }
+		return returnData;
 		 
 	 }
 	 
@@ -407,11 +426,6 @@ public class CSPDCL_INPUT_READING {
 			 con=db.getConnObject2();
 			 
 			 while ((st = br.readLine()) != null) {
-				 
-				  System.out.println(" i am in first while loop");
-
-//				    System.out.println(st); 
-				  System.out.println(++loop);
 
 				  String[] parts = st.split("\\|");
 				  
@@ -691,11 +705,6 @@ public class CSPDCL_INPUT_READING {
 			 con=db.getConnObject2();
 			 
 			 while ((st = br.readLine()) != null) {
-				 
-//				  System.out.println(" i am in first while loop");
-
-//				    System.out.println(st); 
-				  System.out.println(++loop);
 
 				  String[] parts = st.split("\\|");
 				  
@@ -703,7 +712,7 @@ public class CSPDCL_INPUT_READING {
 				  
 				  if(parts.length!=65) {
 					  System.out.println("length="+parts.length);
-					  cp.setMessage( "error in "+loop);
+					  cp.setMessage( "error in line"+line_count+" data:"+st);
 					  cp.setStatus(false);
 				 // return outpu_return;
 				  }

@@ -3,7 +3,7 @@ package com.pojo;
 public class UserRegistration {
 	
 	String mrname=null;
-	  String address=null;
+	 String address=null;
 	 String userid=null;
 	 String email=null;
 	 String desigantion=null;
@@ -16,9 +16,16 @@ public class UserRegistration {
 	 String imei1=null;
 	 String superid=null;
 	 String dccode=null;
+	 String subDivisionCode=null;
 	 
 	 
 	 
+	public String getSubDivisioncode() {
+		return subDivisionCode;
+	}
+	public void setSubDivisioncode(String subDivisionCode) {
+		this.subDivisionCode = subDivisionCode;
+	}
 	public String getDccode() {
 		return dccode;
 	}

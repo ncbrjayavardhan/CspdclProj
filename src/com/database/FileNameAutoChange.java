@@ -55,7 +55,11 @@ public class FileNameAutoChange {
   			//System.out.println("end= "+path);
 
 		//System.out.println("completed");
-		return path.replaceAll("\\", "/");
+  	      try {
+  	    	   return path.replaceAll("\\", "/");
+  	      }catch(Exception e) {
+  	    	  return path;
+  	      }
 		}
 	
 	public static void main(String args[]) {

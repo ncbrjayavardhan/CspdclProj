@@ -64,16 +64,10 @@ public class Login extends HttpServlet {
 		String sessionexp="Session Expired";
 		Connection con=null;
 		PreparedStatement ps=null,ps1=null,ps2=null,ps3=null;
-		String divison=null;
-		String roll=null;
 		String div=null;
-		String dbuser=null;
-		String dbpwd=null;
 		String areacode="";
-		String EMP_TYPE=null,query=null,query1=null,query2=null;
-		ResultSet rs=null,count=null,count_billable=null,count_billed=null;
+		ResultSet rs=null;
 		ResultSet rst=null;
-		int total_consumers=0,total_consumers_billable=0,total_consumers_billed=0;
 		HttpSession session=null;
 		ArrayList<String> li=null;
 		
@@ -90,47 +84,33 @@ public class Login extends HttpServlet {
 			con=db1.getConnObject2();
 			//Select * from VAIBHU_LOGIN where USER_NAME=? and password=? 
 			 ps=con.prepareStatement ("Select * from CSPDCL_WEB_USERS where USER_NAME=? and PASSWORD=? ");
+			
+			 
 			 ps.setString(1,name);
 			 ps.setString(2,pwd);
 			 rs=ps.executeQuery();
-			 
+			 ps1=con.prepareStatement("Select AUTHENTICATION_CODE from CSPDCL_WEB_AUTHENTICATION where USER_NAME=?");
+			 ps1.setString(1,name);
+			 rst=ps1.executeQuery();
+			 boolean login=false;
 			while(rs.next()){
-				
-				
+				login=true;
 				System.out.println("SUCCESESSFULLY LOGINNED");
-				
-//				response.sendRedirect("/VaibhuManagementSystem/TempararryWebPages/HOME_PAGE/home.jsp");
-				
-//				response.sendRedirect("/VaibhuManagementSystem/WebContent/TempararryWebPages/PichartW3school.jsp");
-				  
-//				response.sendRedirect("FinalWebPages/BillingPercentage.jsp");
-				
-				
-				/*ServletContext servletContext = getServletContext();
-			        RequestDispatcher requestDispatcher = servletContext
-			          .getRequestDispatcher("/dashBoard/ProfileViewing.jsp");
-			        request.setAttribute("id", "Allam Sairam");
-			        requestDispatcher.forward(request, response);*/
-				
-				/*RequestDispatcher rd=request.getRequestDispatcher("/dashBoard/ProfileViewing.jsp");  
-		        rd.forward(request, response);*/  
 				session.setAttribute("session1", "1234");
 				session.setAttribute("userid", rs.getString("USER_ID"));
 				session.setAttribute("username", name);
+				while(rst.next()) {
+					session.setAttribute("AUTH_CODE", rst.getObject("AUTHENTICATION_CODE"));
+				}
 
 				/*response.sendRedirect("DashBoard.jsp");*/
 				/*response.sendRedirect("Disign2/TotalUploadedData_show.jsp");*/
 				response.sendRedirect("Disign2/DashBoard.jsp");
 				
 			}
-			 rst=ps.executeQuery();
-			 
-			 boolean login=true;
-			if(!rst.next()){
-				login=false;
+			
+			if(!login){
 				response.sendRedirect("/CspdclDashBoard/");
-				//RequestDispatcher disp = getServletContext().getRequestDispatcher("/loginerror.jsp");
-			    // disp.forward(request, response);
 			}
 			
 			//Area codes calculation
@@ -179,7 +159,7 @@ public class Login extends HttpServlet {
 //			session.setAttribute("total_billable", total_consumers_billable);
 //			session.setAttribute("total_billed", total_consumers_billed);
 			
-System.out.println(" i am in before re directing");
+			System.out.println(" i am in before re directing");
 		
 //				RequestDispatcher rd=getServletContext().getRequestDispatcher("/Home.jsp");	
 			

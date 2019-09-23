@@ -13,12 +13,6 @@ import com.pojo.DashBoardPojo;
 
 public class DashBoardData {
 
-	
-	
-	
-
-
-
 public List DisconnectedconsumerDataTable_divisionwise() {
 	
 	Connection con=null;
@@ -161,13 +155,14 @@ public List DisconnectedconsumerDataTable_divisionwise2(String user_id) {
 				con2=db.getConnObject2();
 				
 				//select count(*) from cspdcl_input2 where SUBSTR(MRU,3,2)='46' and substr(mru,5,2)='02'
-				String Query2="select count(*) from cspdcl_input2 where SUBSTR(MRU,3,2)='"+group_code+"'"+ "and substr(mru,5,2)='"+ subDivCode+"'";
+				
+				String Query2="select count(*) from cspdcl_OUTPUT where SUBSTR(MRU,3,2)='"+group_code+"'"+ "and substr(mru,5,2)='"+ subDivCode+"'";
 				System.out.println("Query2= "+Query2);
 				rs2=dbs.exicuteQueryReesultSet(Query2, con2, rs2, ps2);
 				while (rs2.next()) {
 					input_count=rs2.getString("count(*)");
 					
-					dp.setINPUT_COUNT(input_count);
+					dp.setTOTAL_COUNT(input_count);
 					
 				}
 			}catch(Exception e) {
@@ -188,15 +183,14 @@ public List DisconnectedconsumerDataTable_divisionwise2(String user_id) {
 			}
 			
 			try {
-				DbConnection db2=new DbConnection();
 				con2=db.getConnObject2();
 				
-				String Query2="select count(*) from cspdcl_OUTPUT where SUBSTR(MRU,3,2)='"+group_code+"'";
+				String Query2="select count(*) from cspdcl_input2 where SUBSTR(MRU,3,2)='"+group_code+"'"+ "and substr(mru,5,2)='"+ subDivCode+"'";
 				System.out.println("Query2= "+Query2);
 				rs2=dbs.exicuteQueryReesultSet(Query2, con2, rs2, ps2);
 				while (rs2.next()) {
 					
-					dp.setTOTAL_COUNT(rs2.getString("count(*)"));
+					dp.setINPUT_COUNT(rs2.getString("count(*)"));
 					
 				}
 			}catch(Exception e) {

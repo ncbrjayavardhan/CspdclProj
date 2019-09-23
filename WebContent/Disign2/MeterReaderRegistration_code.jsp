@@ -24,6 +24,7 @@ ur.setMobile(request.getParameter("mobile"));
 ur.setImei1(request.getParameter("imei1"));
 ur.setSuperid(request.getParameter("superid"));
 ur.setDccode(request.getParameter("division"));
+ur.setSubDivisioncode(request.getParameter("subdivision"));
 
 System.out.println("mrname= "+ur.getMrname());
 System.out.println("desigantion= "+ur.getDesigantion());

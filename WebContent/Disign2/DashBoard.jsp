@@ -4,8 +4,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-    <%
-String userid=(String)session.getAttribute("userid").toString();
+ <%
+		String userid=(String)session.getAttribute("userid").toString();
 		System.out.print("userid= "+userid);									
 												
 if(userid.equalsIgnoreCase("null") || userid==null){
@@ -255,7 +255,6 @@ background-size: cover;
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							
 
 							<li class="">
 								<a href="#">
@@ -274,7 +273,7 @@ background-size: cover;
 
 								<b class="arrow"></b>
 							</li>
-							
+						<%if(!"D".equals(session.getAttribute("AUTH_CODE"))){ %>
 							<li class="">
 								<a href="DataLoading.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -343,7 +342,7 @@ background-size: cover;
 							
 						</ul>
 					</li>
-
+<%} %>
 					
 				</ul><!-- /.nav-list -->
 

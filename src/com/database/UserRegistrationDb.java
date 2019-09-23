@@ -354,12 +354,10 @@ public boolean MeterReaderUpdate2(UserRegistration ur) {  // groups delete AND a
 				   con=db.getConnObject2();
 				   DataBaseOperations dbo=new DataBaseOperations();
 				   
-				   String query3="INSERT INTO CSPDCL_DATA_ALLOCATION(GROUP_CODE,MONTH,DC_CODE,USER_NAME) VALUES('"+groups[i]+"',to_date('"+dateFormat.format(date)+"','yyyy/MM/dd'),'"+ur.getDccode()+"','"+ur.getUserid()+"')";
+				   String query3="INSERT INTO CSPDCL_DATA_ALLOCATION(GROUP_CODE,MONTH,DC_CODE,USER_NAME,SUB_DC_CODE) VALUES('"+groups[i]+"',to_date('"+dateFormat.format(date)+"','yyyy/MM/dd'),'"+ur.getDccode()+"','"+ur.getUserid()+"','"+ur.getSubDivisioncode()+"')";
 					System.out.println("query3= "+query3);
 				   
 				   int insrt_rows3 = dbo.exicuteQuery(query3, con);
-				
-				
 				
 				}
 			}catch (Exception e) {

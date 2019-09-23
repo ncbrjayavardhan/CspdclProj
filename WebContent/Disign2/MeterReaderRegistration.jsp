@@ -2,6 +2,7 @@
 <%@page import="com.database.DivisionsList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +75,9 @@
 	</head>
 
 	<body class="no-skin" onload="javascript:yesnoCheck();">
+	<%!
+		public static DivisionsList di ;
+	%>
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -224,7 +228,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							
+				<%if(!"D".equals(session.getAttribute("AUTH_CODE"))){ %>
 							<li class="">
 								<a href="DataLoading.jsp">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -295,7 +299,7 @@
 					</li>
 					
 				</ul><!-- /.nav-list -->
-
+		<%} %>
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
@@ -419,19 +423,12 @@ if(userid.equalsIgnoreCase("null") || userid==null){
 %>
 
 
+
 <%
 /* session.getAttribute("username");
 session.getAttribute("userid"); */
-
-DivisionsList di=new DivisionsList();
+di=new DivisionsList();
 List division=di.DivisionListGetting((String)session.getAttribute("username"));
-List subDivisionCodeList=di.getEmptyList();
-//need to test
- 
-  if (division.size() > 0)
-  {
-	 subDivisionCodeList=di.getSubDivCode((String)division.get(0));
-  }
 
 
 %>
@@ -440,6 +437,8 @@ List subDivisionCodeList=di.getEmptyList();
 
 <script>  
 var request;  
+
+	
 function sendInfo()  
 {  
 
@@ -609,7 +608,7 @@ document.getElementById('data2').innerHTML=val;
                                     
                                     <div class="form-group">
                                         <label class="col-md-12" for="passportn">Division</label>
-                                         <select class="form-control" id="division" name="division">
+                                         <select class="form-control" id="division" name="division"  onchange="setValue()">
                                              
                                              <%  
                                              for(int i=0;i<division.size();i++){
@@ -622,13 +621,8 @@ document.getElementById('data2').innerHTML=val;
                                     </div>
                                      <div class="form-group">
                                         <label class="col-md-12" for="passportn">Sub DivisionCode</label>
-                                         <select class="form-control" id="subdivision" name="subdivision">
-                                        	 <%  
-                                             for(int i=0;i<subDivisionCodeList.size();i++){
-                                             
-                                             %>
-                                                <option value="<%=subDivisionCodeList.get(i) %>"><%=subDivisionCodeList.get(i) %></option>
-                                                <%} %>
+                                         <select class="form-control" id="subdivision" name="subdivision" ">
+                                        	
                                          </select>
                                     </div>
                                     
@@ -706,6 +700,28 @@ document.getElementById('data2').innerHTML=val;
 <![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script type="text/javascript">
+		function removeOptions(selectbox)
+		{
+		    for(var i = selectbox.options.length - 1 ; i >= 0 ; i--)
+		    {
+		        selectbox.remove(i);
+		    }
+		}
+		function setValue(){
+			var selectedValue=document.getElementById("division").value;
+			var divisionList;
+			 removeOptions(document.getElementById('subdivision'));
+			 if (selectedValue == "45") {
+				 divisionList=<%=di.getSubDivionCodeMap().get("45")%>;
+	         }else{
+	        	 divisionList=<%=di.getSubDivionCodeMap().get("46")%>;
+	         }
+		 	for (var i = 0; i < divisionList.length; i++) { 
+		 	   $("#subdivision").append('<option>'+divisionList[i]+'</option>');
+		 	} 
+		}
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
 
